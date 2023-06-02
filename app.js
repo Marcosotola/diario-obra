@@ -15,7 +15,7 @@ hbs.registerPartials(__dirname + "/views/partials");
 // Endpoints para mostrar formulario
 app.get("/", (req, res) => {
     res.render("index", {
-        title: "Formulario de repositorio",
+        title: "Diario de Obra",
     });
     });
 
