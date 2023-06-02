@@ -2,7 +2,7 @@ const express = require("express");
 const hbs = require("hbs");
 const axios = require("axios");
 require("dotenv").config();
-port = 3002;
+port = 3000;
 
 const app = express();
 app.use(express.static("public"));
@@ -50,5 +50,5 @@ app.get("/", (req, res) => {
     });
 
     app.listen(port, () => {
-    console.log("Servidor iniciado en http://localhost:3002 ");
+    console.log("Servidor iniciado en http://localhost:3000 ");
     });
