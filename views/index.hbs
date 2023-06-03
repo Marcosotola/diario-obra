@@ -1,7 +1,25 @@
-{{> header }}
+<!DOCTYPE html>
+<html>
 
-{{!-- Contenido espeífico de la página de formulario --}}
-<h1> {{title }} </h1>
+<head>
+    <meta charset="UTF-8">
+    <title>Tareas</title>
+</head>
 
+<body>
+    <h1>Tareas</h1>
+    <ul>
+        {{#each tareas}}
+        <li>
+            <h3>{{this.fecha}}</h3>
+            <h3>{{this.nombre}}</h3>
+            <p>{{this.descripcion}}</p>
+            <a href="/tareas/edit/{{this.id}}">Editar</a>
+            <a href="/tareas/delete/{{this.id}}">Eliminar</a>
+        </li>
+        {{/each}}
+    </ul>
+    <a href="/tareas/create">Crear nuevo </a>
+</body>
 
-{{> footer}}
+</html>

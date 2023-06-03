@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "diario-obra",
+  "private_key_id": "c85e2becd5d09e07285a8439373c7413d67d00c8",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCfSDJYT13VmnIi\nq71tTuSw/d7eddFoZ/xPN0fcYI1LtJ3dTT/cFNu1Qlf65Bh5YeZJEVZXPFwfQjyl\nof6uLqvpRyTcrHeNgf5kI8iXjo06wL7pSL+L8ltLfRHFlR3OTgp2W0gtKoJBMGt3\n/OXZgTryoqgr2pcGTdP41/IeMIWHxHGAXOdbGHwrCxWbPDdrYw1xiBRgvhXynSfz\nd/86tsIJiBIXIX6fRowJfHF2opTlMTwdU0M14YhWd7AOlQUwMhnDJhUTel1TX4/Q\nGv+GWjq3NJQDqxViCGW1IFI8dhtb1lA4FZosSHsi4/iQ7YOas9vv0eShjhRb502Q\niSR2DKfDAgMBAAECggEADIxYgwKFpu1K7pZPDwx3EcZ+R1JK1AnVI7x8Kc1ldEBf\na27JiCIQiQAYBEjx8KYYyUrXXXoA2+mQ84+Gi9xbaL5VFhl0Na63BtaW1/HACI/k\numYjyPen35OT0dgEiBs30ckxL3W42z/gR4yh4ve+WB0eWI4Y9cMt3t3MUjqKWn6s\nf2B4K4rDam9RusgmY41p9h+vHCuV/qfAUISfE0zvfdydhUfA35UnLGdeguTwVaYa\nHjtRtRE8hEG/91Wbv2dQtHirp+myz7+PeST5YGgQxAfQPPoTUac9gWI/8TyEOhbd\nFeEhNWSR0P15Mq0iVlZPrTgfc4C3AACHIp3sHm++MQKBgQDWGsvEHq5XbV3xkoCh\nMxjvSN3bW0gpck0co2rkY7SggPKdqNng+fpdxECRuvBon54LVeCcDg7W9yJOzo37\nS9PWT63h+5BCItK5OJxyUgr1kI8HcNe3+qbfe7nDqpJFqt6MSifILJPBSMGppJQs\nY7fFhfn2w8tl0WCdb6jRwe5YiwKBgQC+cyeMDhtbeKtMSnyOv11uD5fdf010mJ8I\nRlYDSqL9i8B5caNJyIAoC33fuFoAgoqGZLSNc7z+8jyHB1Mx58lPHSA7ZP/WZSPP\nKzsw9cNJgnJdlCYa7PsgWT7TBUw8GdUluJD+2Jhz9gkC53ksM9QsDh+xZJHqjSC8\nw9rIZa8cqQKBgFqByVGGhrx+hw/vlmCOcSP18ZMg60haAS7yBeW2IE0ZNXZgQnpQ\nMf4hUApKtAYGM5EnJGPTrYJBxkb6Ghr42vvlguPcrAbJIbsaq0fIVsmn6k6C7S3g\nz1n5u3VzTZIVwS4cyuRbs7opP3SvFdQN80mUcS5XZkwMToM/CGZjTJYxAoGAB0eN\nhmvvncJyAbuDIU2tO4y7CEtaYY+H3KAbn4qVyk0yMTInxKU2SNGPoSKBxi03MEXf\nJNz8p14I9DxScMDkT/LUDZEhukcpZDzJyWhLa57h0jPcdQED5Euk/BnivRVbsVJp\nsGQFB8GqvIKufgMJJBnyGiy26xkz3CM8VJaWZ+kCgYEAsWkaJMHpoShlmqNg9VhS\ng9cjX5X2DunTSSeJxjVPLSzCDZrx83WlSd/+I+8/qEl6Kaz5fDGqrcq/RRila8Sa\nY8N2qrDQJ9BaQmuG0holO8ISBjmz34AG3NO3dnl/0SxP6OIYuaLNEnjmJ3klK3y6\nJar2aewjSDIKvePzuomgnxY=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-whd96@diario-obra.iam.gserviceaccount.com",
+  "client_id": "101108203335875402423",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-whd96%40diario-obra.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
