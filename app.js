@@ -10,13 +10,21 @@ const port = 3000;
 
 const app = express();
 
+app.use(express.static("public"));
+
+//Configurar el directorio de vistas y el motor de plantilla
+app.set("views", __dirname + "/views");
+app.set("view engine", "hbs");
+hbs.registerPartials(__dirname + "/views/partials");
+
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
 });
 
 
 const db = admin.firestore();
-const tareasCollection = db.collection('tareas');
+const tareasCollection = db.collection('tareas').orderBy("fecha","asc");
+const tareasEditCreate = db.collection('tareas');
 
 app.set('view engine', 'hbs');
 
@@ -45,13 +53,14 @@ app.post("/tareas/create", async (req, res) => {
         nombre,
         descripcion,
     };
-    await tareasCollection.add(tarea);
+    await tareasEditCreate.add(tarea);
     res.redirect("/");
     });
 
+
 app.get("/tareas/edit/:id", async (req, res) => {
     const tareaId = req.params.id;
-    const tareasSnapshot = await tareasCollection.doc(tareaId).get();
+    const tareasSnapshot = await tareasEditCreate.doc(tareaId).get();
     const tarea = {
         id: tareasSnapshot.id,
         ...tareasSnapshot.data(),
@@ -69,7 +78,7 @@ app.post("/tareas/edit/:id", async (req, res) => {
         descripcion,
     };
 
-    await tareasCollection.doc(tareaId).update(tarea);
+    await tareasEditCreate.doc(tareaId).update(tarea);
     res.redirect('/');
 
     });
@@ -77,12 +86,14 @@ app.post("/tareas/edit/:id", async (req, res) => {
     app.get("/tareas/delete/:id", async (req, res) => {
         const tareaId = req.params.id;
 
-        await tareasCollection.doc(tareaId).delete();
+        await tareasEditCreate.doc(tareaId).delete();
 
         res.redirect('/');
+
+        
         })
 
-
+        
 
 
 /*const app = express();
