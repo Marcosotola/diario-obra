@@ -98,63 +98,38 @@ app.get("/tareas/delete/:id", async (req, res) => {
 });
 
 
-app.get("/personas", (req, res) => {
-    res.render("personas", {
-    });
+
+
+app.set('view engine', 'hbs');
+
+// Middleware para imprimir la URL de la imagen de perro en la consola
+const logUrlMiddleware = async (req, res, next) => {
+  try {
+    const respuesta = await axios.get('https://random.dog/woof.json');
+    const urlPerro = respuesta.data.url;
+    console.log(urlPerro); // Imprimir URL en la consola
+    req.urlPerro = urlPerro; // Agregar URL a la solicitud
+    next();
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+};
+
+// Ruta para mostrar la página de perros
+app.get('/perros', logUrlMiddleware, (req, res) => {
+  const urlPerro = req.urlPerro;
+
+  res.render('perros', { url: urlPerro });
 });
 
 
-//desde acá
-const obtenerPersonas = async() => {
-    try {
-        const respuesta = await axios.get('https://console.firebase.google.com/u/0/project/diario-obra/database/diario-obra-default-rtdb/data/~2Fpersonas?hl=es-419')
-        console.log(respuesta);
-    } catch(error){
-        console.log(error);
-}
-}
 
-obtenerPersonas();
-/*
-// Endpoints para mostrar formulario
-app.get("/", (req, res) => {
-    res.render("index", {
-        title: "Diario de Obra",
-    });
-    });
 
-    // Endpoint para obtener informacion de un repositorio
-    app.get("/repositories", async (req, res) => {
-    try {
-        const owner = req.query.owner;
-        const repo = req.query.repo;
-        const url = `https://api.github.com/repos/${owner}/${repo}`;
 
-        //Agregar el token de autenticacion en el encabezado de la solicitud
-        const token = process.env.GITHUB_TOKEN;
-        const headers = {
-        Authorization: `Bearer ${token}`,
-        };
 
-        //Realizar la solicitud a la API de GitHUb
-        const response = await axios.get(url, { headers });
 
-        //Renderizar la vista de detalla del repositorio
-        res.render("repository", {
-        title: "Detalle del repositorio",
-        repository: response.data,
-        });
-    } catch (error) {
-        // Manejar cualquier error de la solicitud
-        res.render("error", {
-        title: "Error",
-        message: "Error al obtener información del respositorio",
-        });
-    }
-    });
 
-*/
-//hasta acá
 
 app.listen(port, () => {
     console.log("Servidor iniciado en http://localhost:3000 ");
