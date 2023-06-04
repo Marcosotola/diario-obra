@@ -23,10 +23,10 @@ admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
 });
 
-
 const db = admin.firestore();
-const tareasCollection = db.collection('tareas').orderBy("fecha", "asc");
+
 const tareasEditCreate = db.collection('tareas');
+const tareasCollection = db.collection('tareas').orderBy("fecha", "asc");
 const fotosCollection = db.collection('fotos');
 
 app.set('view engine', 'hbs');
@@ -43,15 +43,6 @@ app.get('/', async (req, res) => {
         ...doc.data()
     }));
     res.render('index', { tareas });
-});
-
-app.get('/fotos', async (req, res) => {
-    const fotosSnapshot = await fotosCollection.get();
-    const fotos = fotosSnapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
-    }));
-    res.render('fotos', { fotos });
 });
 
 app.get("/tareas/create", (req, res) => {
@@ -97,7 +88,14 @@ app.get("/tareas/delete/:id", async (req, res) => {
     res.redirect('/');
 });
 
-
+app.get('/fotos', async (req, res) => {
+    const fotosSnapshot = await fotosCollection.get();
+    const fotos = fotosSnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+    }));
+    res.render('fotos', { fotos });
+});
 
 
 app.set('view engine', 'hbs');
@@ -107,7 +105,7 @@ const logUrlMiddleware = async (req, res, next) => {
   try {
     const respuesta = await axios.get('https://random.dog/woof.json');
     const urlPerro = respuesta.data.url;
-    console.log(urlPerro); // Imprimir URL en la consola
+    //console.log(urlPerro); // Imprimir URL en la consola
     req.urlPerro = urlPerro; // Agregar URL a la solicitud
     next();
   } catch (error) {
@@ -122,13 +120,6 @@ app.get('/perros', logUrlMiddleware, (req, res) => {
 
   res.render('perros', { url: urlPerro });
 });
-
-
-
-
-
-
-
 
 
 app.listen(port, () => {
