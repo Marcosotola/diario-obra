@@ -98,19 +98,24 @@ app.get("/tareas/delete/:id", async (req, res) => {
 });
 
 
+app.get("/personas", (req, res) => {
+    res.render("personas", {
+    });
+});
 
 
+//desde acá
+const obtenerPersonas = async() => {
+    try {
+        const respuesta = await axios.get('https://console.firebase.google.com/u/0/project/diario-obra/database/diario-obra-default-rtdb/data/~2Fpersonas?hl=es-419')
+        console.log(respuesta);
+    } catch(error){
+        console.log(error);
+}
+}
 
-
-
-/*const app = express();
-app.use(express.static("public"));
-
-//Configurar el directorio de vistas y el motos de plantilla
-app.set("views", __dirname + "/views");
-app.set("view engine", "hbs");
-hbs.registerPartials(__dirname + "/views/partials");
-
+obtenerPersonas();
+/*
 // Endpoints para mostrar formulario
 app.get("/", (req, res) => {
     res.render("index", {
@@ -147,7 +152,10 @@ app.get("/", (req, res) => {
         });
     }
     });
+
 */
+//hasta acá
+
 app.listen(port, () => {
     console.log("Servidor iniciado en http://localhost:3000 ");
 });
