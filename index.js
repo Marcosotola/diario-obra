@@ -11,7 +11,7 @@ const port = 3000;
 
 const app = express();
 
-app.use(express.static("public"));
+
 
 
 //Configurar el directorio de vistas y el motor de plantilla
