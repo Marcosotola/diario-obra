@@ -1,6 +1,5 @@
 
 const { getFirestoreInstance } = require("./firebase");
-
 const db = getFirestoreInstance();
 
 const express = require("express");
@@ -9,10 +8,11 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 
+
 const tareasRoutes = require("./routes/tareasRoutes");
 const fotosRoutes = require("./routes/fotosRoutes");
 const perrosRoutes = require("./routes/perrosRoutes");
-
+const formulario = require("./routes/formulario");
 
 const app = express();
 const port = 3000;
@@ -30,8 +30,13 @@ app.use(express.static("public"));
 app.use("/", tareasRoutes);
 app.use("/fotos", fotosRoutes);
 app.use("/perros", perrosRoutes);
+app.use('/formulario', formulario);
 
-/*const tareasEditCreate = db.collection('tareas');
+
+
+//CRUD
+
+const tareasEditCreate = db.collection('tareas');
 const tareasCollection = db.collection('tareas').orderBy("fecha", "asc");
 
 
@@ -89,7 +94,7 @@ app.get("/tareas/delete/:id", async (req, res) => {
     res.redirect('/');
 });
 
-*/
+
 
 
 app.listen(port, () => {
