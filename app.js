@@ -1,5 +1,119 @@
+
+const { getFirestoreInstance } = require("./firebase");
+
+const db = getFirestoreInstance();
+
 const express = require("express");
 const hbs = require("hbs");
+const dotenv = require("dotenv");
+dotenv.config();
+
+
+const tareasRoutes = require("./routes/tareasRoutes");
+const fotosRoutes = require("./routes/fotosRoutes");
+const perrosRoutes = require("./routes/perrosRoutes");
+
+
+const app = express();
+const port = 3000;
+
+// Configurar el directorio de vistas y el motor de plantilla
+app.set("views", __dirname + "/views");
+app.set("view engine", "hbs");
+hbs.registerPartials(__dirname + "/views/partials");
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static("public"));
+
+
+// Rutas
+app.use("/", tareasRoutes);
+app.use("/fotos", fotosRoutes);
+app.use("/perros", perrosRoutes);
+
+/*const tareasEditCreate = db.collection('tareas');
+const tareasCollection = db.collection('tareas').orderBy("fecha", "asc");
+
+
+
+app.get('/', async (req, res) => {
+
+    const tareasSnapshot = await tareasCollection.get();
+    const tareas = tareasSnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+    }));
+    res.render('index', { tareas });
+});
+
+app.get("/tareas/create", (req, res) => {
+    res.render("create");
+});
+
+app.post("/tareas/create", async (req, res) => {
+    const { fecha, nombre, descripcion } = req.body;
+    const tarea = {
+        fecha,
+        nombre,
+        descripcion,
+    };
+    await tareasEditCreate.add(tarea);
+    res.redirect("/");
+});
+
+app.get("/tareas/edit/:id", async (req, res) => {
+    const tareaId = req.params.id;
+    const tareasSnapshot = await tareasEditCreate.doc(tareaId).get();
+    const tarea = {
+        id: tareasSnapshot.id,
+        ...tareasSnapshot.data(),
+    };
+    res.render("edit", { tarea });
+});
+
+app.post("/tareas/edit/:id", async (req, res) => {
+    const tareaId = req.params.id;
+    const { fecha, nombre, descripcion } = req.body;
+    const tarea = {
+        fecha,
+        nombre,
+        descripcion,
+    };
+    await tareasEditCreate.doc(tareaId).update(tarea);
+    res.redirect('/');
+});
+
+app.get("/tareas/delete/:id", async (req, res) => {
+    const tareaId = req.params.id;
+    await tareasEditCreate.doc(tareaId).delete();
+    res.redirect('/');
+});
+
+*/
+
+
+app.listen(port, () => {
+  console.log("Servidor iniciado en http://localhost:3000");
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+//EL CODIGO SIGUIENTE FUNCIONA SIN CONTROLLERS NI ROUTES
+/*
+
+const express = require("express");
+const hbs = require("hbs");
+//const router = require ('./router/forMail')
 const axios = require("axios");
 require("dotenv").config();
 const admin = require("firebase-admin");
@@ -19,6 +133,7 @@ app.set("views", __dirname + "/views");
 app.set("view engine", "hbs");
 hbs.registerPartials(__dirname + "/views/partials");
 
+
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
 });
@@ -29,7 +144,7 @@ const tareasEditCreate = db.collection('tareas');
 const tareasCollection = db.collection('tareas').orderBy("fecha", "asc");
 const fotosCollection = db.collection('fotos');
 
-app.set('view engine', 'hbs');
+
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
@@ -98,8 +213,6 @@ app.get('/fotos', async (req, res) => {
 });
 
 
-app.set('view engine', 'hbs');
-
 // Middleware para imprimir la URL de la imagen de perro en la consola
 const logUrlMiddleware = async (req, res, next) => {
   try {
@@ -125,3 +238,6 @@ app.get('/perros', logUrlMiddleware, (req, res) => {
 app.listen(port, () => {
     console.log("Servidor iniciado en http://localhost:3000 ");
 });
+
+
+*/
