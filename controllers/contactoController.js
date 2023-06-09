@@ -5,7 +5,7 @@ const enviarContacto = async (req, res) => {
 
     // Validar campos
     if (!nombre || !email || !mensaje) {
-        return res.render('formulario', { error: 'Todos los campos son obligatorios' });
+        return res.render('contacto', { error: 'Todos los campos son obligatorios' });
     }
 
     // Configurar transportador SMTP
@@ -37,7 +37,7 @@ const enviarContacto = async (req, res) => {
         });
     } catch (error) {
         console.log(error);
-        res.render('formulario', { error: 'Error al enviar mensaje' });
+        res.render('contacto', { error: 'Error al enviar mensaje' });
     }
 };
 
