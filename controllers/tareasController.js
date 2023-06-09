@@ -1,6 +1,5 @@
 
 const { getFirestoreInstance } = require("../firebase");
-
 const db = getFirestoreInstance();
 
 
@@ -16,6 +15,16 @@ const index = async (req, res) => {
     }));
     res.render('index', { tareas });
 };
+
+
+
+module.exports = {
+    index
+};
+
+
+
+
 
 // Manejador para la ruta de creación de tareas
 /*
@@ -68,13 +77,13 @@ const deleteTask = async (req, res) => {
     res.redirect('/');
 };
 */
-module.exports = {
-    index,
+//module.exports = {
+   // index,
     //create,
     //createTask,
     //edit,
     //editTask,
     //deleteTask
-};
+//};
 
 
