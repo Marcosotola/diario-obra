@@ -3,8 +3,7 @@ const db = getFirestoreInstance();
 
 const express = require("express");
 const hbs = require("hbs");
-const dotenv = require("dotenv");
-dotenv.config();
+
 
 const tareasRoutes = require("./routes/tareasRoutes");
 const fotosRoutes = require("./routes/fotosRoutes");
