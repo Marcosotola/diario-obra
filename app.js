@@ -1,4 +1,4 @@
-const { getFirestoreInstance } = require("./firebase");
+const { getFirestoreInstance } = require("./db/firebase");
 const db = getFirestoreInstance();
 
 const express = require("express");
