@@ -1,3 +1,6 @@
+
+
+
 const { getFirestoreInstance } = require("../db/firebase");
 
 const db = getFirestoreInstance();
@@ -5,7 +8,7 @@ const db = getFirestoreInstance();
 // Obtener todos los colaboradores
 const getAllColaboradores = async (req, res) => {
   try {
-    const colaboradoresRef = db.collection("colaboradores");
+    const colaboradoresRef = db.collection("colaboradores").orderBy("nombre", "asc");
     const snapshot = await colaboradoresRef.get();
     const colaboradores = snapshot.docs.map((doc) => ({
       id: doc.id,
@@ -53,6 +56,25 @@ const createColaborador = async (req, res) => {
   }
 };
 
+// Obtener la vista de edición del colaborador por ID
+const getEditColaborador = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const colaboradorRef = db.collection("colaboradores").doc(id);
+    const doc = await colaboradorRef.get();
+    if (!doc.exists) {
+      return res.status(404).send("Colaborador no encontrado");
+    }
+    const colaborador = {
+      id: doc.id,
+      ...doc.data(),
+    };
+    res.render("editar-colaborador", { colaborador });
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+};
+
 // Actualizar un colaborador
 const updateColaborador = async (req, res) => {
   try {
@@ -81,6 +103,7 @@ module.exports = {
   getAllColaboradores,
   getColaboradorById,
   createColaborador,
+  getEditColaborador,
   updateColaborador,
   deleteColaborador,
 };
