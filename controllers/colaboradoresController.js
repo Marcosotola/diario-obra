@@ -8,7 +8,7 @@ const db = getFirestoreInstance();
 // Obtener todos los colaboradores
 const getAllColaboradores = async (req, res) => {
   try {
-    const colaboradoresRef = db.collection("colaboradores").orderBy("nombre", "asc");
+    const colaboradoresRef = db.collection("colaboradores");
     const snapshot = await colaboradoresRef.get();
     const colaboradores = snapshot.docs.map((doc) => ({
       id: doc.id,
