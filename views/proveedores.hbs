@@ -1,0 +1,66 @@
+<!-- proveedores.hbs -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Proveedores</title>
+    <!-- Incluye los estilos de Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    {{> header }}
+    <div class="container">
+        <h1>Listado de Proveedores</h1>
+
+        <div class="container-md d-flex justify-content-center">
+            <table class="table table-success table-striped">
+                <thead>
+                    <tr>
+                        <th>Empresa</th>
+                        <th>Producto</th>
+                        <th>Dirección</th>
+                        <th>Teléfono</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each proveedores}}
+                    <tr>
+                        <td>{{empresa}}</td>
+                        <td>{{producto}}</td>
+                        <td>{{direccion}}</td>
+                        <td>{{telefono}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+        <h2>Crear nuevo proveedor</h2>
+        <form action="/proveedores" method="POST">
+            <div class="mb-3">
+                <label for="empresa" class="form-label">Empresa:</label>
+                <input type="text" class="form-control" id="empresa" name="empresa" required>
+            </div>
+            <div class="mb-3">
+                <label for="producto" class="form-label">Producto:</label>
+                <input type="text" class="form-control" id="producto" name="producto" required>
+            </div>
+            <div class="mb-3">
+                <label for="direccion" class="form-label">Dirección:</label>
+                <input type="text" class="form-control" id="direccion" name="direccion" required>
+            </div>
+            <div class="mb-3">
+                <label for="telefono" class="form-label">Teléfono:</label>
+                <input type="text" class="form-control" id="telefono" name="telefono" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Crear proveedor</button>
+        </form>
+    </div>
+
+
+    {{> footer }}
+</body>
+
+</html>
