@@ -9,7 +9,6 @@ const axios = require('axios');
 
 const tareasRoutes = require("./routes/tareasRoutes");
 const fotosRoutes = require("./routes/fotosRoutes");
-const perrosRoutes = require("./routes/perrosRoutes");
 const contactoRoutes = require("./routes/contactoRoutes");
 const buscarRoutes = require('./routes/buscarRoutes');
 const colaboradoresRoutes = require("./routes/colaboradoresRoutes");
@@ -30,7 +29,6 @@ app.use(methodOverride("_method"));
 // Rutas
 app.use("/buscar", buscarRoutes);
 app.use("/fotos", fotosRoutes);
-app.use("/perros", perrosRoutes);
 app.use("/formulario", contactoRoutes);
 app.use("/colaboradores", colaboradoresRoutes);
 app.use('/proveedores', proveedoresRoute);
