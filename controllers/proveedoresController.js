@@ -4,7 +4,13 @@ const obtenerProveedores = async (req, res) => {
   try {
     const response = await axios.get('https://diario-obra-default-rtdb.firebaseio.com/proveedores.json');
     const proveedores = response.data;
-    res.render('proveedores', { proveedores });
+
+    // Ordenar los proveedores alfabéticamente por empresa
+    const proveedoresOrdenados = Object.values(proveedores).sort((a, b) => {
+      return a.empresa.localeCompare(b.empresa);
+    });
+
+    res.render('proveedores', { proveedores: proveedoresOrdenados });
   } catch (error) {
     console.error('Error al obtener los proveedores:', error);
     res.render('error', { error: 'Error al obtener los proveedores' });
@@ -28,21 +34,8 @@ const crearProveedor = async (req, res) => {
   }
 };
 
-const eliminarProveedor = async (req, res) => {
-  try {
-    const proveedorId = req.params.id;
-    await axios.delete(`https://diario-obra-default-rtdb.firebaseio.com/proveedores/${proveedorId}.json`);
-    res.redirect('/proveedores');
-  } catch (error) {
-    console.error('Error al eliminar el proveedor:', error);
-    res.render('error', { error: 'Error al eliminar el proveedor' });
-  }
+module.exports = {
+  obtenerProveedores,
+  crearProveedor
 };
 
-
-module.exports = {
-    obtenerProveedores,
-    crearProveedor,
-    eliminarProveedor,
-  };
-  
