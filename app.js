@@ -5,7 +5,6 @@ const express = require("express");
 const hbs = require("hbs");
 const methodOverride = require("method-override");
 require('dotenv').config();
-const axios = require('axios');
 
 const tareasRoutes = require("./routes/tareasRoutes");
 const fotosRoutes = require("./routes/fotosRoutes");

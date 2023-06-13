@@ -1,9 +1,7 @@
-
-
-
 const { getFirestoreInstance } = require("../db/firebase");
-
 const db = getFirestoreInstance();
+
+
 
 // Obtener todos los colaboradores
 const getAllColaboradores = async (req, res) => {
