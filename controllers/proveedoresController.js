@@ -26,7 +26,7 @@ const crearProveedor = async (req, res) => {
       telefono: req.body.telefono
     };
 
-    await axios.post('https://diario-obra-default-rtdb.firebaseio.com/proveedores.json', nuevoProveedor);
+    await axios.post(process.env.FIREBASE_API_URL, nuevoProveedor);
     res.redirect('/proveedores');
   } catch (error) {
     console.error('Error al crear el proveedor:', error);
