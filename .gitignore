@@ -1,24 +1,7 @@
-# Archivos de configuración y claves de API sensibles
+# Ignorar la carpeta node_modules
+node_modules/
+
+# Ignorar el archivo .env
 .env
 
-# Dependencias y directorios de paquetes
-/node_modules
-/package-lock.json
-/yarn.lock
-
-# Archivos generados
-/dist
-/build
-/.DS_Store
-
-# Archivos de registro y almacenamiento de datos locales
-/log
-/db.sqlite
-
-# Entorno de desarrollo específico
-/.vscode
-/.idea
-/.env.local
-
-# Otros archivos y directorios personalizados que desees excluir
 
